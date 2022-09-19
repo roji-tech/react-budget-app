@@ -12,7 +12,7 @@ export const BudgetProvider = ({ children }) => {
   const [defaultBudgetId, setDefaultBudgetId] = useState(UNCATEGORISED);
   const [showExpense, setShowExpense] = useState(false);
   const [showBudget, setShowBudget] = useState(false);
-  const [showViewExps, setShowViewExps] = useState(true);
+  const [showViewExps, setShowViewExps] = useState(false);
 
   const getBudgetExpenses = (budgetId) =>
     expenses.filter((expense) => expense.budgetId === budgetId);

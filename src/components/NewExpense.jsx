@@ -22,10 +22,7 @@ const NewExpense = ({ show }) => {
 
   const budget = getBudget();
 
-  console.log(budget);
-
   const handleSubmit = (e) => {
-    console.log("hello");
     e.preventDefault();
     addExpense({
       description: descRef.current.value,
