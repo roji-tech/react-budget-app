@@ -10,17 +10,11 @@ const NewExpense = ({ show }) => {
     addExpense,
     budgets,
     defaultBudgetId,
-    handleClose
+    handleClose,
+    getBudget
   } = useBudgetStore();
 
-  const getBudget = () => {
-    const defaultBudget = budgets.find(
-      (budget) => budget.id === defaultBudgetId
-    );
-    return defaultBudget;
-  };
-
-  const budget = getBudget();
+  const budget = getBudget(defaultBudgetId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,7 +54,7 @@ const NewExpense = ({ show }) => {
             <label htmlFor="name">Budget Id</label>
             <select ref={budgetIdRef} required>
               {budget ? (
-                <option value={getBudget().id}>{getBudget().name}</option>
+                <option value={budget.id}>{budget.name}</option>
               ) : (
                 <>
                   <option value={UNCATEGORISED}>Uncategorised</option>

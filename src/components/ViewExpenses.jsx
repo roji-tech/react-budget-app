@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import NewBudgetStyle from "../styles/NewBudgetStyle";
-import useBudgetStore from "../context/BudgetContext";
+import useBudgetStore, { UNCATEGORISED } from "../context/BudgetContext";
 import capitalizer from "../utils/capitalizer";
 import formatNumber from "../utils/currencyFormatter";
 
@@ -12,20 +12,27 @@ const ViewExpenses = () => {
     defaultBudgetId,
     deleteExpense,
     deleteBudget,
-    getBudgetExpenses
+    getBudgetExpenses,
+    getBudget
   } = useBudgetStore();
 
   const show = showViewExps;
 
   const expenses = getBudgetExpenses(defaultBudgetId);
 
+  const budget = getBudget(defaultBudgetId);
+  const budgetName = budget ? capitalizer(budget.name) : "UNCATEGORISED";
+  console.log(budgetName);
+
   return (
     <Container show={show}>
       <div>
         <div className="head">
           <h2>
-            Expenses
-            <span onClick={() => deleteBudget(defaultBudgetId)}>DELETE</span>
+            {budgetName}
+            {defaultBudgetId !== UNCATEGORISED && (
+              <span onClick={() => deleteBudget(defaultBudgetId)}>DELETE</span>
+            )}
           </h2>
           <div className="close" onClick={handleClose}>
             <p>&times;</p>

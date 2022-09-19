@@ -67,6 +67,8 @@ export const BudgetProvider = ({ children }) => {
     setShowViewExps(false);
   };
 
+  const getBudget = (id) => budgets.find((budget) => budget.id === id);
+
   const contextData = {
     showExpense,
     defaultBudgetId,
@@ -74,6 +76,7 @@ export const BudgetProvider = ({ children }) => {
     expenses,
     showBudget,
     showViewExps,
+    getBudget,
     setShowViewExps,
     setShowBudget,
     handleClose,
