@@ -1,17 +1,10 @@
 import React from "react";
-import useBudgetStore from "../context/BudgetContext";
 import HeaderStyle from "../styles/HeaderStyle";
 
 const Header = ({ setShowBudget, setShowExpense }) => {
   const handleAddBudget = () => {
     setShowBudget(true);
   };
-
-    const { setForSingleExpense } = useBudgetStore();
-
-    const handleAdd = () => {
-      setForSingleExpense();
-    };
 
   const handleAddExpense = () => {
     setShowExpense(true);

@@ -22,7 +22,6 @@ const ViewExpenses = () => {
 
   const budget = getBudget(defaultBudgetId);
   const budgetName = budget ? capitalizer(budget.name) : "UNCATEGORISED";
-  console.log(budgetName);
 
   return (
     <Container show={show}>
@@ -40,7 +39,7 @@ const ViewExpenses = () => {
         </div>
         <div className="expenses">
           {expenses.map((expense) => (
-            <div className="single_expense">
+            <div key={expense.id} className="single_expense">
               <div>{capitalizer(expense.description)}</div>
               <div className="amt">{formatNumber(expense.amount)}</div>
               <div className="delIcon">
