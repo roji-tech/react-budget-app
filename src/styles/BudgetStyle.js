@@ -6,8 +6,9 @@ const BudgetContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   background-color: white;
+  min-width: 100%;
 `;
 
 export default BudgetContainer

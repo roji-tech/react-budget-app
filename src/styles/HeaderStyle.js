@@ -27,12 +27,13 @@ const HeaderStyle = styled.div`
 
     p {
       padding: 10px;
-      background: #f0f8ff;
+      background: #cecece;
       cursor: pointer;
       border-radius: 5px;
 
       :hover {
         background: whitesmoke;
+        background-color: #add8e680;
       }
 
       :active {
@@ -42,9 +43,8 @@ const HeaderStyle = styled.div`
 
     .add {
       background-color: #66cdf0;
-      
+
       :hover {
-        background-color: #add8e6;
       }
     }
   }

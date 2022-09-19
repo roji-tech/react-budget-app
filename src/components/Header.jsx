@@ -1,13 +1,20 @@
 import React from "react";
+import useBudgetStore from "../context/BudgetContext";
 import HeaderStyle from "../styles/HeaderStyle";
 
-const Header = () => {
-  const handleAdd = () => {
-    console.log("add");
+const Header = ({ setShowBudget, setShowExpense }) => {
+  const handleAddBudget = () => {
+    setShowBudget(true);
   };
 
-  const handleView = () => {
-    console.log("view");
+    const { setForSingleExpense } = useBudgetStore();
+
+    const handleAdd = () => {
+      setForSingleExpense();
+    };
+
+  const handleAddExpense = () => {
+    setShowExpense(true);
   };
 
   return (
@@ -16,8 +23,10 @@ const Header = () => {
         <h1>Budgets</h1>
       </div>
       <div className="btns">
-        <p className="add" onClick={handleAdd}>Add Expense</p>
-        <p onClick={handleView}>View Expense</p>
+        <p className="add" onClick={handleAddBudget}>
+          Add Budget
+        </p>
+        <p onClick={handleAddExpense}>Add Expense</p>
       </div>
     </HeaderStyle>
   );

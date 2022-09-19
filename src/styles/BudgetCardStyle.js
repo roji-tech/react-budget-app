@@ -1,15 +1,21 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const BudgetCardStyle = styled.div`
   width: 400px;
-  aspect-ratio: 2/1;
+  aspect-ratio: ${({ showMax }) => (!showMax ? "2/1" : "3/1")};
+  aspect-ratio: ${({ hideButtons, showMax }) =>
+    hideButtons | showMax ? "3.5/1" : "2/1"};
   border-radius: 10px;
   padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ values: { exceeded } }) => exceeded ? "#f9d8d8" : "aliceblue"};
+  background: ${({ values: { exceeded } }) =>
+    exceeded ? "#f9d8d8" : "aliceblue"};
+  background: ${({ showMax }) => showMax && "aliceblue"};
   font-size: 1em;
+  box-sizing: border-box;
+  box-shadow: 0.5px 0.5px 10px 1px #18252c60;
 
   .title {
     display: flex;
@@ -17,7 +23,7 @@ const BudgetCardStyle = styled.div`
 
     p {
       small {
-        opacity: .7;
+        opacity: 0.7;
       }
     }
   }
@@ -29,16 +35,35 @@ const BudgetCardStyle = styled.div`
     width: 100%;
     min-width: 100%;
     position: relative;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 0.1px solid rgba(3, 54, 79, 0.3);
+    overflow: hidden;
 
-    ::after {
+    ::before {
       position: absolute;
       inset: 0;
       content: "";
       background-color: ${({ values: { color } }) => color};
       border-radius: 200px;
+      width: 0%;
       width: ${({ values: { width } }) => width + "%"};
       max-width: 100%;
+      z-index: 1;
+    }
+
+    ::after {
+      position: absolute;
+      inset: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 30%;
+      content: "";
+      background-color: white;
+      border-radius: 200px;
+      width: 0%;
+      width: ${({ values: { width2 } }) => width2 + "%"};
+      max-width: 100%;
+      z-index: 1;
     }
   }
 
@@ -58,9 +83,12 @@ const BudgetCardStyle = styled.div`
       background: whitesmoke;
       cursor: pointer;
       border-radius: 5px;
+      background: whitesmoke;
+      border: 1px solid #cecece;
+      box-shadow: 1px 1px 10px 0 #cecece;
 
       :hover {
-        background: whitesmoke;
+        background: #cecece;
       }
 
       :active {
@@ -70,11 +98,12 @@ const BudgetCardStyle = styled.div`
 
     .add {
       background-color: #66cdf0;
-      
+      border: 1px solid #66cdf0;
+
       :hover {
         background-color: #add8e6;
       }
-    } 
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -84,7 +113,6 @@ const BudgetCardStyle = styled.div`
   @media screen and (max-width: 400px) {
     width: 100%;
   }
+`;
 
-`
-
-export default BudgetCardStyle
+export default BudgetCardStyle;

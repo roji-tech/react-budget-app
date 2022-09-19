@@ -7,7 +7,7 @@
 }
 
 :root {
-  width: 99.89%;
+  width: 99.99%;
 }
 
 body {
@@ -26,8 +26,24 @@ a {
 }
 
 .App {
-  width: 100%;
   color: #000;
   padding: 5%;
+  display: flex;
+  justify-content: center;
   background-color: #ffffff;
+  transition: all .3s ease-in-out;
+}
+
+.content {
+  min-width: 100%;
+  max-width: 700px;
+  color: #000;
+  padding: 0;
+  /* background-color: #c84343; */
+}
+
+@media screen and (min-width: 1200px) {
+  .App {
+    padding: 5% 15%;
+  }
 }
