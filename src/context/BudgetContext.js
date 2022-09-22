@@ -54,6 +54,8 @@ export const BudgetProvider = ({ children }) => {
     setBudgets((prevBudgets) =>
       prevBudgets.filter((budget) => budget.id !== id)
     );
+
+    handleClose();
   };
 
   const setForSingleExpense = (id = UNCATEGORISED) => {
